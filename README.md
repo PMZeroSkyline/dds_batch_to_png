@@ -1,5 +1,5 @@
 # dds_batch_to_png
-.dds file batch to png file cli.
+.dds image files batch to .png image files cli.
 
 # How to use
 use command line example : 
