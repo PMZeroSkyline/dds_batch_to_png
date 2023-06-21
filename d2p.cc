@@ -22,6 +22,15 @@ void GetFolderFiles(const string& path, vector<fs::path> &result, bool isRecursi
 		}
     }
 }
+void EnsureParentFolder(string targetPath)
+{
+    fs::path path = targetPath;
+    bool isExists = fs::exists(path.parent_path()) && fs::is_directory(path.parent_path());
+    if (!isExists)
+    {
+        fs::create_directories(path.parent_path());
+    }
+}
 int main(int argc, char** argv)
 {
     if (argc != 2)
@@ -39,7 +48,10 @@ int main(int argc, char** argv)
         {
             fs::path outPath = path;
             outPath.replace_extension(".png");
+            outPath = outPath.parent_path().string() + "/output/" + outPath.filename().string();
+            EnsureParentFolder(outPath.string());
             string cmd = "nvtt_export " + path.string() + " -o " + outPath.string();
+            cout << "export path : " << outPath.string() << endl;
             system(cmd.c_str());
         }
     }
