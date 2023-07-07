@@ -3,7 +3,7 @@
 
 # How to use
 use command line example : 
-> c2p D:\my_dds_images
+> d2p D:\my_dds_images
 
 # Hints
 - Only supports windows system
